@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Data from './Data'
 import {useState} from 'react'
@@ -6,14 +6,14 @@ import Categories from './Categories';
 import Menu from './Menu';
 
 function App() {
-  const allcateory=['all',...new Set (Data.map((item)=>item.category))];
+  const allcateory=['All',...new Set (Data.map((item)=>item.category))];
   console.log(allcateory)
   
   const [menu,setMenu]=useState(Data)
-  const[category,setCategory]=useState([])
+  // const[category,setCategory]=useState([])
 
   const filter=(category)=>{
-    if(category==="all"){
+    if(category==="All"){
       setMenu(Data)
       return;
       
@@ -26,7 +26,7 @@ function App() {
     <div className="App">
      
         <h2>Our Menu</h2>
-        <Categories  filterItems={filter}/>
+        <Categories category={allcateory} filterItems={filter}/>
         <Menu items={menu}/>
         
         
